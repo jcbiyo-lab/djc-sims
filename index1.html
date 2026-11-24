@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJC-SIMS</title>
+    <link rel="stylesheet" href="index1.css">
+    <script src="biyo.js" defer></script>
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="logo.png" alt="DJC Logo">
+            <div>
+                <h2>DJC-SIMS</h2>
+                <p>Student Information System</p>
+            </div>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+        <button class="nav-btn" data-page="records">▤ Student Records</button>
+        <button class="nav-btn" data-page="add">＋ Add Student</button>
+
+        <div class="sidebar-bottom">
+            <p>DOÑA JOSEFA CAMPUS</p>
+            <small>Student Management System</small>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">DOÑA JOSEFA CAMPUS</p>
+                <h1>Student Information Management System</h1>
+            </div>
+            <span class="status"><i></i> Online</span>
+        </header>
+
+        <section id="dashboard" class="page">
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">OVERVIEW</p>
+                    <h2>Dashboard</h2>
+                    <p class="muted">Welcome to DJC-SIMS!</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon blue-icon">♙</div>
+                    <p>Total Students</p>
+                    <h3 id="total">0</h3>
+                    <small>All registered students</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green-icon">▣</div>
+                    <p>Grade 11 Students</p>
+                    <h3 id="grade11">0</h3>
+                    <small>Registered in Grade 11</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple-icon">▤</div>
+                    <p>Grade 12 Students</p>
+                    <h3 id="grade12">0</h3>
+                    <small>Registered in Grade 12</small>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Recent Students</h3>
+                        <p>Recently added student records</p>
+                    </div>
+                    <button class="btn secondary" data-page="records">View All</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>LRN</th>
+                                <th>Full Name</th>
+                                <th>Grade</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="records" class="page hidden">
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">DATABASE</p>
+                    <h2>Student Records</h2>
+                    <p class="muted">Search and manage student information.</p>
+                </div>
+                <button class="btn primary" data-page="add">＋ Add Student</button>
+            </div>
+
+            <div class="panel">
+                <div class="search-row">
+                    <input type="search" id="search"
+                        placeholder="Search by LRN, name, strand, or section...">
+                    <span id="recordCount">0 records</span>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>LRN</th>
+                                <th>Full Name</th>
+                                <th>Grade</th>
+                                <th>Strand</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="add" class="page hidden">
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">STUDENT INFORMATION</p>
+                    <h2 id="formTitle">Add Student</h2>
+                    <p class="muted">Enter the student's details below.</p>
+                </div>
+            </div>
+
+            <div class="panel form-panel">
+                <h3 class="form-title">Student Details</h3>
+                <p class="muted form-description">Fields marked with * are required.</p>
+
+                <form id="studentForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="lrn">LRN *</label>
+                            <input id="lrn" type="text" inputmode="numeric"
+                                maxlength="12" placeholder="12-digit LRN" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="fullName">Full Name *</label>
+                            <input id="fullName" type="text"
+                                placeholder="Enter full name" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="gradeLevel">Grade Level *</label>
+                            <select id="gradeLevel" required>
+                                <option value="">Select grade level</option>
+                                <option value="Grade 11">Grade 11</option>
+                                <option value="Grade 12">Grade 12</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="strand">Strand *</label>
+                            <input id="strand" type="text"
+                                placeholder="e.g.STRAND" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="section">Section *</label>
+                            <input id="section" type="text"
+                                placeholder="Enter section" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="contact">Contact Number</label>
+                            <input id="contact" type="tel"
+                                placeholder="Enter contact number">
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email Address</label>
+                            <input id="email" type="email"
+                                placeholder="Enter email address">
+                        </div>
+
+                        <div class="field">
+                            <label for="status">Status *</label>
+                            <select id="status" required>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn primary" id="saveBtn">Save Student</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            DJC-SIMS &copy; 2026 | Student Information Management System
+        </footer>
+    </main>
+</div>
+
+</body>
+</html>
